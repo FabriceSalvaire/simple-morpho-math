@@ -1,0 +1,169 @@
+# -*- Python -*-
+
+# ##################################################################################################
+#
+# SimpleMorphoMath - A simple mathematical morphology library.
+# Copyright (C) 2012 Salvaire Fabrice
+#
+# ##################################################################################################
+
+# ##################################################################################################
+
+import numpy as np
+
+# ##################################################################################################
+
+from SimpleMorphoMath.SimpleMorphoMath1D import *
+
+# ##################################################################################################
+
+% if python_mode:
+print 'Function'
+% endif
+function = Function((5,7,6,9,9,4,5,10,8,9,8,6,3,5,7,9,2,6))
+print function.plot(plot_type='umbra')
+
+print 'Translated -1'
+function_translated = function.clone().translate(-1)
+print function_translated.plot(plot_type='umbra')
+print 'Translated +1'
+function_translated = function.clone().translate(1)
+print function_translated.plot(plot_type='umbra')
+
+print 'Dilated by unit ball -+-'
+function_dilated = Function(function)
+function_dilated.dilate(unit_ball)
+# print function_dilated.plot(plot_type='umbra')
+print function_dilated.plot(plot_type='umbra', mask=function)
+
+print 'Dilated by unit ball -+- using translation'
+function_dilated = Function(function)
+for offset in -1, 1:
+    function_dilated.pointwise_max(function.clone().translate(offset))
+print function_dilated.plot(plot_type='umbra', mask=function)
+
+print 'Eroded by unit ball -+-'
+function_eroded = Function(function)
+function_eroded.erode(unit_ball)
+# print function_eroded.plot(plot_type='umbra')
+print function_eroded.plot(plot_type='umbra', mask=function)
+
+print 'Eroded by unit ball -+- using translation / Wrong at boundaries'
+function_eroded = Function(function)
+for offset in -1, 1:
+    function_eroded.pointwise_min(function.clone().translate(offset))
+print function_eroded.plot(plot_type='umbra', mask=function)
+
+print 'Eroded by unit ball -+- using translation'
+function_eroded = Function(function)
+for offset in -1, 1:
+    function_eroded.pointwise_min(function.clone().translate(offset, padd_inf=False))
+print function_eroded.plot(plot_type='umbra', mask=function)
+
+print 'Closed by unit ball -+-'
+function_closed = Function(function)
+function_closed.close(unit_ball)
+# print function_closed.plot(plot_type='umbra')
+print function_closed.plot(plot_type='umbra', mask=function)
+
+print 'Opened by unit ball -+-'
+function_opened = Function(function)
+function_opened.open(unit_ball)
+# print function_opened.plot(plot_type='umbra')
+print function_opened.plot(plot_type='umbra', mask=function)
+
+print 'Top-Hated by unit ball -+-'
+function_top_hated = Function(function)
+function_top_hated.top_hat(unit_ball)
+# print function_top_hated.plot(plot_type='umbra')
+print function_top_hated.plot(plot_type='umbra', mask=function)
+
+print 'Subtracted by 3'
+function_marker = Function(function)
+function_marker -= 3
+print function_marker.plot(plot_type='umbra', mask=function)
+
+print 'Geodesic Reconstruction'
+function_reconstructed = function.geodesic_reconstruction(function_marker)
+print function_reconstructed.plot(plot_type='umbra', mask=function)
+
+print 'H-Dome 3'
+function_h_dome = function.h_dome(3)
+print function_h_dome.plot(plot_type='umbra', mask=function)
+
+print 'H-Dome 1'
+function_h_dome = function.h_dome(1)
+print function_h_dome.plot(plot_type='umbra', mask=function)
+
+print 'Function'
+signal_level = 10
+width = 10
+function = Function([signal_level]*10
+                    +[2*signal_level]*width
+                    +[signal_level]*width
+                    +[2*signal_level]*int(1.5*width)
+                    +[signal_level]*width
+                    +[2*signal_level]*width
+                    +[signal_level]*width
+                    )
+print function.plot(plot_type='umbra')
+print 'Function with Noise'
+noise_level = 7
+noise = np.random.uniform(low=-noise_level, high=noise_level, size=len(function))
+noise = np.array(noise, dtype=np.int)
+# noise[np.where(noise < 0)] = -noise_level
+# noise[np.where(noise > 0)] = noise_level
+function_with_noise = function + noise
+print function_with_noise.plot(plot_type='umbra')
+
+print 'Alternate Sequential Filters'
+for i in xrange(1,4):
+    # print '  close', i
+    function_with_noise.close(BallStructuringElement(i))
+    # print '  open', i
+    function_with_noise.open(BallStructuringElement(i+1))
+print function_with_noise.plot(plot_type='umbra')
+# print function_with_noise.plot(plot_type='umbra', mask=function)
+h_dome = function_with_noise.h_dome(3)
+print h_dome.plot(plot_type='umbra', mask=function)
+
+# ##################################################################################################
+
+print 'Function'
+function = Function((5,7,6,9,9,4,5,10,8,9,8,6,3,5,7,9,2,6,4,5,10,8,1,4,4,5,10,8,11,8,5,10,8))
+print function.plot(plot_type='umbra')
+
+print 'Dilated by radius=2 --+--'
+function_dilated = Function(function)
+function_dilated.dilate(BallStructuringElement(radius=2))
+print function_dilated.plot(plot_type='umbra', mask=function)
+
+print 'Dilated by vHGW radius=2 --+--'
+function_dilated_vhgw = Function(function)
+function_dilated_vhgw.dilate_vhgw(radius=2)
+print function_dilated_vhgw.plot(plot_type='umbra', mask=function)
+
+assert function_dilated == function_dilated_vhgw
+
+# ##################################################################################################
+
+print 'Function'
+print function.plot(plot_type='umbra')
+
+print 'Eroded by radius=2 --+--'
+function_eroded = Function(function)
+function_eroded.erode(BallStructuringElement(radius=2))
+print function_eroded.plot(plot_type='umbra', mask=function)
+
+print 'Eroded by vHGW radius=2 --+--'
+function_eroded_vhgw = Function(function)
+function_eroded_vhgw.erode_vhgw(radius=2)
+print function_eroded_vhgw.plot(plot_type='umbra', mask=function)
+
+assert function_eroded == function_eroded_vhgw
+
+# ##################################################################################################
+#
+# End
+#
+# ##################################################################################################

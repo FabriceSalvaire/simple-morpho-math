@@ -1,0 +1,81 @@
+#! /usr/bin/env python
+# -*- Python -*-
+
+####################################################################################################
+#
+# SimpleMorphoMath - A simple mathematical morphology library.
+# Copyright (C) 2012 Salvaire Fabrice
+#
+####################################################################################################
+
+####################################################################################################
+
+import argparse
+import os
+
+from mako.template import Template
+from mako.lookup import TemplateLookup
+
+####################################################################################################
+
+from SimpleMorphoMath.SimpleMorphoMath1D import *
+
+####################################################################################################
+
+argument_parser = argparse.ArgumentParser(description='Format Template')
+
+argument_parser.add_argument('input_file',
+                             metavar='InputFile',
+                             help='template file')
+
+argument_parser.add_argument('output_file',
+                             metavar='OutputFile',
+                             help='Output file')
+
+args = argument_parser.parse_args()
+
+####################################################################################################
+
+print 'Convert %s to %s' % (args.input_file, args.output_file)
+
+python_mode = False
+rest_mode = False
+
+if args.output_file.endswith('.py'):
+    python_mode = True
+    print '  Python mode'
+elif args.output_file.endswith('.rst'):
+    rest_mode = True
+    print '  Rest mode'
+
+exec_dict = globals()
+
+root_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+template_lookup = TemplateLookup(directories=[root_directory])
+
+with open(os.path.join(root_directory, 'template', 'common.mako')) as f:
+    template_text = f.read()
+with open(args.input_file) as f:
+    template_text += f.read()
+
+#template = Template(filename=args.input_file, lookup=template_lookup)
+template = Template(template_text, lookup=template_lookup)
+
+with file(args.output_file, 'w') as output_file:
+    text = template.render_unicode(python_mode=python_mode,
+                                   rest_mode=rest_mode,
+                                   exec_dict=exec_dict)
+    cleaned_text = ''
+    if python_mode:
+        for line in text.splitlines():
+            if line:
+                cleaned_text += line + '\n'
+    else:
+        cleaned_text = text
+    output_file.write(cleaned_text.encode('utf-8'))
+
+####################################################################################################
+#
+# End
+#
+####################################################################################################

@@ -1,0 +1,33 @@
+# -*- Makefile -*-
+
+####################################################################################################
+#
+# SimpleMorphoMath - A simple mathematical morphology library.
+# Copyright (C) 2012 Salvaire Fabrice
+#
+####################################################################################################
+
+####################################################################################################
+
+TEMPLATE_PATH = .
+RST_PATH = ../doc/sphinx/source
+PY_PATH = ../example
+TEMPLATES = $(wildcard $(TEMPLATE_PATH)/test_*.mako)
+PY_FILES = $(patsubst $(TEMPLATE_PATH)/%, $(PY_PATH)/%, $(TEMPLATES:.mako=.py)) 
+RST_FILES = $(patsubst $(TEMPLATE_PATH)/%, $(RST_PATH)/%, $(TEMPLATES:.mako=.rst))
+
+all: $(PY_FILES) $(RST_FILES)
+
+####################################################################################################
+
+$(RST_PATH)/%.rst : $(TEMPLATE_PATH)/%.mako
+	from-template $< $@
+
+$(PY_PATH)/%.py : $(TEMPLATE_PATH)/%.mako
+	from-template $< $@
+
+####################################################################################################
+#
+# End
+#
+####################################################################################################

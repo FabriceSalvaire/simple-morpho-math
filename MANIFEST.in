@@ -1,0 +1,8 @@
+include MANIFEST.in COPYING
+recursive-include SimpleMorphoMath *.ini *.py
+recursive-include example *.ini *.py
+include example/SimpleMorphoMath
+include doc/sphinx/make-html doc/sphinx/Makefile.sphinx 
+recursive-include doc *.rst *.py
+prune build
+prune doc/sphinx/build

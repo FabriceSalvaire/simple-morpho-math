@@ -1,0 +1,12 @@
+*~
+*pyc
+.bzr
+.bzrignore
+MANIFEST
+SimpleMorphoMath.egg-info/
+build/
+dist/
+doc/sphinx/source/api/SimpleMorphoMath.rst
+doc/sphinx/source/api/SimpleMorphoMath/
+doc/sphinx/source/test_SimpleMorphoMath1D.rst
+doc/sphinx/source/test_SimpleMorphoMath2D.rst

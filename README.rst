@@ -2,13 +2,13 @@
 SimpleMorphoMath V0.1.0
 =======================
 
-:Info: The home page of SimpleMorphoMath is located at http://fabricesalvaire.github.com/SimpleMorphoMath
+:Info: The home page of SimpleMorphoMath is located at http://fabricesalvaire.github.com/simple-morpho-math
 
 Source Repository
 -----------------
 
 The SimpleMorphoMath project is hosted at github
-http://github.com/FabriceSalvaire/SimpleMorphoMath
+http://github.com/FabriceSalvaire/simple-morpho-math
 
 Requirements
 ------------
@@ -26,12 +26,5 @@ Download and unpack the source, then run the following commands in a terminal::
 
 Running
 -------
-
-Packages for Linux
-------------------
-
-An RPM is available for Fedora.
-
-See http://github.com/FabriceSalvaire/SimpleMorphoMath/downloads
 
 .. End

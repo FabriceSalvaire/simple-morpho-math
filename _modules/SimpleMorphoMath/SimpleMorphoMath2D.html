@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SimpleMorphoMath.SimpleMorphoMath2D &mdash; SimpleMorphoMath 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../static/doctools.js"></script>
+    <link rel="top" title="SimpleMorphoMath 0.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">SimpleMorphoMath 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for SimpleMorphoMath.SimpleMorphoMath2D</h1><div class="highlight"><pre>
+<span class="c">#####################################################################################################</span>
+<span class="c">#</span>
+<span class="c"># SimpleMorphoMath - A simple mathematical morphology library.</span>
+<span class="c"># Copyright (C) 2012 Salvaire Fabrice</span>
+<span class="c">#</span>
+<span class="c">#####################################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot; This module implements Morphological 2D Operators.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c">####################################################################################################</span>
+
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c">####################################################################################################</span>
+
+<span class="kn">from</span> <span class="nn">SimpleMorphoMath.SimpleMorphoMath1D</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c">####################################################################################################</span>
+
+<div class="viewcode-block" id="Location"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Location">[docs]</a><span class="k">class</span> <span class="nc">Location</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_arguments</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Wrong shape&quot;</span><span class="p">)</span>
+
+    <span class="c">###############################################</span>
+    
+<div class="viewcode-block" id="Location._check_arguments"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Location._check_arguments">[docs]</a>    <span class="k">def</span> <span class="nf">_check_arguments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">array</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">array</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Args size &gt; 2&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">array</span>
+
+    <span class="c">###############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c"># used by np.arrray when __init__ args is a Location instance</span>
+        <span class="k">return</span> <span class="mi">2</span>
+
+    <span class="c">###############################################</span>
+
+<div class="viewcode-block" id="Location._get_x"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Location._get_x">[docs]</a>    <span class="k">def</span> <span class="nf">_get_x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</div>
+<div class="viewcode-block" id="Location._get_y"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Location._get_y">[docs]</a>    <span class="k">def</span> <span class="nf">_get_y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</div>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_x</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_y</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="s">&#39;Location (</span><span class="si">%i</span><span class="s">, </span><span class="si">%i</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="c">###############################################</span>
+    
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="Domain2D"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Domain2D">[docs]</a><span class="k">class</span> <span class="nc">Domain2D</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Domain</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">sup</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Domain</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">sup</span><span class="p">)</span>
+
+    <span class="c">###############################################</span>
+
+<div class="viewcode-block" id="Domain2D.forward_iterator"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Domain2D.forward_iterator">[docs]</a>    <span class="k">def</span> <span class="nf">forward_iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">forward_iterator</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">forward_iterator</span><span class="p">()):</span>
+            <span class="k">yield</span> <span class="n">Location</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+
+    <span class="c">###############################################</span>
+</div>
+<div class="viewcode-block" id="Domain2D.backward_iterator"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Domain2D.backward_iterator">[docs]</a>    <span class="k">def</span> <span class="nf">backward_iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">backward_iterator</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">backward_iterator</span><span class="p">()):</span>
+            <span class="k">yield</span> <span class="n">Location</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+
+    <span class="c">###############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">location</span><span class="o">.</span><span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="ow">and</span> <span class="n">location</span><span class="o">.</span><span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="BallStructuringElement"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.BallStructuringElement">[docs]</a><span class="k">class</span> <span class="nc">BallStructuringElement</span><span class="p">(</span><span class="n">StructuringElement</span><span class="p">):</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+
+        <span class="c"># generate (-1, 0, 1)</span>
+        <span class="n">axis_offsets</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">radius</span><span class="p">,</span> <span class="n">radius</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c"># generate (-1, 0, 1) * (-1, 0, 1)</span>
+        <span class="c">#   (-1, -1), (-1, 0), (-1, 1),</span>
+        <span class="c">#   ( 0, -1), ( 0, 0), ( 0, 1),</span>
+        <span class="c">#   ( 1, -1), ( 1, 0), ( 1, 1)</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="p">[</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">axis_offsets</span><span class="p">,</span> <span class="n">axis_offsets</span><span class="p">)]</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BallStructuringElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="CrossStructuringElement"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.CrossStructuringElement">[docs]</a><span class="k">class</span> <span class="nc">CrossStructuringElement</span><span class="p">(</span><span class="n">StructuringElement</span><span class="p">):</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+
+        <span class="n">offset</span> <span class="o">=</span> \
+            <span class="p">[</span><span class="n">Location</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="o">-</span><span class="n">radius</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">+</span> \
+            <span class="p">[</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="o">-</span><span class="n">radius</span><span class="p">,</span> <span class="n">radius</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">+</span> \
+            <span class="p">[</span><span class="n">Location</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">radius</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CrossStructuringElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="HLineStructuringElement"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.HLineStructuringElement">[docs]</a><span class="k">class</span> <span class="nc">HLineStructuringElement</span><span class="p">(</span><span class="n">StructuringElement</span><span class="p">):</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+
+        <span class="n">offset</span> <span class="o">=</span> <span class="p">[</span><span class="n">Location</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="o">-</span><span class="n">radius</span><span class="p">,</span> <span class="n">radius</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">HLineStructuringElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="VLineStructuringElement"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.VLineStructuringElement">[docs]</a><span class="k">class</span> <span class="nc">VLineStructuringElement</span><span class="p">(</span><span class="n">StructuringElement</span><span class="p">):</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+
+        <span class="n">offset</span> <span class="o">=</span> <span class="p">[</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="o">-</span><span class="n">radius</span><span class="p">,</span> <span class="n">radius</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VLineStructuringElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<span class="n">unit_ball</span> <span class="o">=</span> <span class="n">BallStructuringElement</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cross</span> <span class="o">=</span> <span class="n">CrossStructuringElement</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+
+<div class="viewcode-block" id="Function2D"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Function2D">[docs]</a><span class="k">class</span> <span class="nc">Function2D</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+
+    <span class="n">unit_ball</span> <span class="o">=</span> <span class="n">BallStructuringElement</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">Domain2D</span><span class="p">(</span><span class="n">Domain</span><span class="p">(</span><span class="n">inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sup</span><span class="o">=</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+                               <span class="n">Domain</span><span class="p">(</span><span class="n">inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sup</span><span class="o">=</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__array__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span>
+
+        <span class="c"># used to pass Function2D as argument to the ctor</span>
+
+        <span class="k">if</span> <span class="n">dtype</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c">###############################################</span>
+
+<div class="viewcode-block" id="Function2D._zeros"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Function2D._zeros">[docs]</a>    <span class="k">def</span> <span class="nf">_zeros</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint</span><span class="p">)</span> 
+
+    <span class="c">###############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">location</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">location</span><span class="o">.</span><span class="n">y</span><span class="p">]</span>
+
+    <span class="c">###############################################</span>
+
+    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">location</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">location</span><span class="o">.</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="c">###############################################</span>
+
+<div class="viewcode-block" id="Function2D.translate"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Function2D.translate">[docs]</a>    <span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">padd_inf</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+
+        <span class="n">new_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_zeros</span><span class="p">()</span>     
+
+        <span class="k">if</span> <span class="n">offset</span> <span class="o">==</span> <span class="n">Location</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">new_values</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">...</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">padd_inf</span><span class="p">:</span>
+                <span class="n">padd_value</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">padd_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+            <span class="c"># Fixme: find a simplest way do to that</span>
+
+            <span class="k">if</span> <span class="n">offset</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">offset</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">new_values</span><span class="p">[</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">:,</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">:]</span> <span class="o">=</span> <span class="n">padd_value</span>
+                <span class="n">new_values</span><span class="p">[:</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">,:</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">:,</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">:]</span>
+
+            <span class="k">elif</span> <span class="n">offset</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">offset</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">new_values</span><span class="p">[:,</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">:]</span> <span class="o">=</span> <span class="n">padd_value</span>
+                <span class="n">new_values</span><span class="p">[:,:</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">:]</span>
+
+            <span class="k">elif</span> <span class="n">offset</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">offset</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">new_values</span><span class="p">[:</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">:]</span> <span class="o">=</span> <span class="n">padd_value</span>
+                <span class="n">new_values</span><span class="p">[</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">:,:</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">:]</span>
+
+            <span class="k">elif</span> <span class="n">offset</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">offset</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">new_values</span><span class="p">[</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">:,:</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">padd_value</span>
+                <span class="n">new_values</span><span class="p">[:</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">:,:</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">]</span>
+
+            <span class="k">elif</span> <span class="n">offset</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">offset</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">new_values</span><span class="p">[:,:</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">padd_value</span>
+                <span class="n">new_values</span><span class="p">[:,</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[:,:</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">]</span>
+
+            <span class="k">elif</span> <span class="n">offset</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">offset</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">new_values</span><span class="p">[:</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">,:</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">padd_value</span>
+                <span class="n">new_values</span><span class="p">[</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">:,</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">,:</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">y</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">offset</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">offset</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">new_values</span><span class="p">[</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">:,:]</span> <span class="o">=</span> <span class="n">padd_value</span>
+                <span class="n">new_values</span><span class="p">[:</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">,:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">:,:]</span>
+
+            <span class="k">elif</span> <span class="n">offset</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">offset</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">new_values</span><span class="p">[:</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">padd_value</span>
+                <span class="n">new_values</span><span class="p">[</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">:,:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="o">-</span><span class="n">offset</span><span class="o">.</span><span class="n">x</span><span class="p">,:]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">new_values</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="c">###############################################</span>
+</div>
+<div class="viewcode-block" id="Function2D.print_object"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Function2D.print_object">[docs]</a>    <span class="k">def</span> <span class="nf">print_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;0&#39;</span><span class="p">,</span> <span class="s">&#39;-&#39;</span><span class="p">)</span> 
+
+    <span class="c">###############################################</span>
+</div>
+<div class="viewcode-block" id="Function2D.reconstruct_using_fifo"><a class="viewcode-back" href="../../api/SimpleMorphoMath/SimpleMorphoMath2D.html#SimpleMorphoMath.SimpleMorphoMath2D.Function2D.reconstruct_using_fifo">[docs]</a>    <span class="k">def</span> <span class="nf">reconstruct_using_fifo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">marker</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; Gray Scale Reconstruction Algorithm using FIFO from Luc Vincent</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">reconstruction</span> <span class="o">=</span> <span class="n">marker</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+
+        <span class="n">structuring_element_iterator</span> <span class="o">=</span> <span class="n">StructuringElementIterator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit_ball</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">dilate</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">sub_domain</span><span class="p">):</span>
+            <span class="n">reconstruction</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="n">reconstruction</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">structuring_element_iterator</span><span class="o">.</span><span class="n">iterate_at</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">sub_domain</span><span class="p">)]),</span> <span class="bp">self</span><span class="p">[</span><span class="n">p</span><span class="p">])</span>
+
+        <span class="c"># Propagate marker forward in self</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">forward_iterator</span><span class="p">():</span>
+            <span class="n">dilate</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s">&#39;+&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&#39;N+&#39;</span>
+            <span class="n">reconstruction</span><span class="o">.</span><span class="n">print_object</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">backward_iterator</span><span class="p">():</span>
+                <span class="n">dilate</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s">&#39;-&#39;</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s">&#39;N-&#39;</span>
+            <span class="n">reconstruction</span><span class="o">.</span><span class="n">print_object</span><span class="p">()</span>
+
+        <span class="c"># Propagate marker backward in self and fill the fifo for the missed points</span>
+        <span class="n">fifo</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">backward_iterator</span><span class="p">():</span>
+            <span class="n">dilate</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s">&#39;-&#39;</span><span class="p">)</span>
+            <span class="c"># If a point in the N- has to be dilated then push it in the fifo</span>
+            <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">structuring_element_iterator</span><span class="o">.</span><span class="n">iterate_at</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s">&#39;-&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">reconstruction</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">reconstruction</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="ow">and</span> <span class="n">reconstruction</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="p">[</span><span class="n">q</span><span class="p">]:</span>
+                    <span class="n">fifo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                    <span class="k">continue</span>
+
+        <span class="c"># Consume the fifo</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">fifo</span><span class="p">):</span>
+            <span class="c"># pop fifo</span>
+            <span class="n">p</span><span class="p">,</span> <span class="n">fifo</span> <span class="o">=</span> <span class="n">fifo</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fifo</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="c"># dilate the current point in self and push the new point</span>
+            <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">structuring_element_iterator</span><span class="o">.</span><span class="n">iterate_at</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">reconstruction</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">reconstruction</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="ow">and</span> <span class="n">reconstruction</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="p">[</span><span class="n">q</span><span class="p">]:</span>
+                    <span class="n">reconstruction</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">reconstruction</span><span class="p">[</span><span class="n">p</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">q</span><span class="p">])</span>
+                    <span class="n">fifo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">reconstruction</span>
+
+<span class="c">####################################################################################################</span>
+<span class="c">#</span>
+<span class="c"># End</span>
+<span class="c">#</span>
+<span class="c">####################################################################################################</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">SimpleMorphoMath 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Fabrice Salvaire.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

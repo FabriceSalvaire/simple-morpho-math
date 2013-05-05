@@ -1,0 +1,9 @@
+*************************
+ :mod:`MathplotlibTools`
+*************************
+
+.. automodule:: SimpleMorphoMath.MathplotlibTools
+   :members:
+   :show-inheritance:
+
+.. End

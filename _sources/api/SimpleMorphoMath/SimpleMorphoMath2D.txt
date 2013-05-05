@@ -1,0 +1,9 @@
+***************************
+ :mod:`SimpleMorphoMath2D`
+***************************
+
+.. automodule:: SimpleMorphoMath.SimpleMorphoMath2D
+   :members:
+   :show-inheritance:
+
+.. End

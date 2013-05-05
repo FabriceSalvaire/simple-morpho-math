@@ -1,0 +1,11 @@
+*************************
+ :mod:`SimpleMorphoMath`
+*************************
+
+.. toctree::
+  SimpleMorphoMath/MathplotlibTools
+  SimpleMorphoMath/PrettyPrinting
+  SimpleMorphoMath/SimpleMorphoMath1D
+  SimpleMorphoMath/SimpleMorphoMath2D
+
+.. End

@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; SimpleMorphoMath 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="static/default.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="SimpleMorphoMath 0.1.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">SimpleMorphoMath 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p># -<em>- Python -</em>-</p>
+<p>#
+# SimpleMorphoMath - A simple mathematical morphology library.
+# Copyright (C) 2012 Salvaire Fabrice
+#</p>
+<p>from SimpleMorphoMath.SimpleMorphoMath2D import *</p>
+<p>l0 = Location(1, 1)
+print l0
+l0 = Location((1, 1))
+print l0
+l1 = Location(l0)
+print l1
+l2 = l0 + l1
+print l2</p>
+<p># Domain(0, 10) * Domain(0, 10)
+domain = Domain2D(Domain(0, 10), Domain(0, 10))
+print &#8216;, &#8216;.join([str(x) for x in domain.forward_iterator()])</p>
+<p>print &#8216;Ball Structuring Element&#8217;
+structuring_element = BallStructuringElement(1)
+print &#8216;  offsets:&#8217;, &#8216;, &#8216;.join([str(x) for x in structuring_element])
+print &#8216;  offsets -:&#8217;, &#8216;, &#8216;.join([str(x) for x in structuring_element.iterator_minus()])
+print &#8216;  offsets +:&#8217;, &#8216;, &#8216;.join([str(x) for x in structuring_element.iterator_plus()])
+structuring_element_iterator = StructuringElementIterator(structuring_element, domain)
+print &#8216;  offsets &#64; (5,5):&#8217;, &#8216;, &#8216;.join([str(x) for x in structuring_element_iterator.iterate_at(Location(5,5))])</p>
+<p>print &#8216;Cross Structuring Element&#8217;
+structuring_element = CrossStructuringElement(1)
+print &#8216;, &#8216;.join([str(x) for x in structuring_element])</p>
+<p>print &#8216;HLine Structuring Element&#8217;
+structuring_element = HLineStructuringElement(2)
+print &#8216;, &#8216;.join([str(x) for x in structuring_element])</p>
+<p>print &#8216;VLine Structuring Element&#8217;
+structuring_element = VLineStructuringElement(2)
+print &#8216;, &#8216;.join([str(x) for x in structuring_element])</p>
+<p>print &#8216;Function&#8217;
+#                       1  2  3  4  5  6  7  8  9 10
+function = Function2D([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  1</p>
+<blockquote>
+<div>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  2
+[0, 0, 0, 1, 1, 1, 0, 0, 0, 0], #  3
+[0, 0, 1, 1, 1, 1, 1, 0, 0, 0], #  4
+[0, 0, 1, 1, 1, 1, 1, 0, 0, 0], #  5
+[0, 0, 1, 1, 1, 1, 1, 0, 0, 0], #  6
+[0, 0, 0, 1, 1, 1, 0, 0, 0, 0], #  7
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  8
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  9
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # 10
+])</div></blockquote>
+<p>function.print_object()</p>
+<p>print &#8216;Translated (-1, -1)&#8217;
+function_translated = function.clone().translate(Location(-1, -1), padd_inf=False)
+function_translated.print_object()</p>
+<p>print &#8216;Translated (+1, +1)&#8217;
+function_translated = function.clone().translate(Location(1, 1), padd_inf=False)
+function_translated.print_object()</p>
+<p>print &#8216;Dilated by unit ball -+-&#8216;
+function_dilated = Function2D(function)
+function_dilated.dilate(unit_ball)
+function_dilated.print_object()</p>
+<p>print &#8216;Dilated by unit ball -+- using translation&#8217;
+function_dilated = Function2D(function)
+for offset in unit_ball:</p>
+<blockquote>
+<div>function_dilated.pointwise_max(function.clone().translate(offset))</div></blockquote>
+<p>function_dilated.print_object()</p>
+<p>print &#8216;Eroded by unit ball -+-&#8216;
+function_eroded = Function2D(function)
+function_eroded.erode(unit_ball)
+function_eroded.print_object()</p>
+<p>print &#8216;Eroded by unit ball -+- using translation&#8217;
+function_eroded = Function2D(function)
+for offset in unit_ball:</p>
+<blockquote>
+<div># print &#8216;Translated&#8217;, offset
+# function.clone().translate(offset).print_object()
+function_eroded.pointwise_min(function.clone().translate(offset))</div></blockquote>
+<p>function_eroded.print_object()</p>
+<p>print &#8216;Function&#8217;
+#                       1  2  3  4  5  6  7  8  9 10
+function = Function2D([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  1</p>
+<blockquote>
+<div>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  2
+[0, 0, 0, 1, 0, 1, 0, 0, 0, 0], #  3
+[0, 0, 1, 1, 1, 1, 1, 0, 0, 0], #  4
+[0, 0, 0, 1, 1, 1, 0, 0, 0, 0], #  5
+[0, 0, 1, 1, 1, 1, 1, 0, 0, 0], #  6
+[0, 0, 0, 1, 0, 1, 0, 0, 0, 0], #  7
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  8
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  9
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # 10
+])</div></blockquote>
+<p>function.print_object()</p>
+<p>print &#8216;Closed by unit ball -+-&#8216;
+function_closed = Function2D(function)
+function_closed.close(unit_ball)
+function_closed.print_object()</p>
+<p>print &#8216;Opened by unit ball -+-&#8216;
+function_opened = Function2D(function)
+function_opened.open(unit_ball)
+function_opened.print_object()</p>
+<p>print &#8216;Function&#8217;
+#                       1  2  3  4  5  6  7  8  9 10
+function = Function2D([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0,], #  1</p>
+<blockquote>
+<div>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0,], #  2
+[0, 0, 3, 0, 0, 0, 0, 0, 0, 0,], #  3
+[0, 0, 1, 0, 0, 0, 0, 0, 0, 0,], #  4
+[0, 0, 2, 0, 0, 0, 0, 0, 0, 0,], #  5
+[0, 0, 1, 0, 0, 0, 0, 0, 0, 0,], #  6
+[0, 0, 1, 0, 0, 0, 0, 0, 0, 0,], #  7
+[0, 0, 2, 0, 0, 0, 0, 0, 0, 0,], #  8
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0,], #  9
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]  # 10
+])</div></blockquote>
+<p>function.print_object()</p>
+<p>print &#8216;Closed by vline -+-&#8216;
+function_opened = Function2D(function)
+function_opened.close(VLineStructuringElement(1))
+function_opened.print_object()</p>
+<p>print &#8216;Function&#8217;
+#                       1  2  3  4  5  6  7  8  9 10
+function = Function2D([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  1</p>
+<blockquote>
+<div>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  2
+[0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  3
+[0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #  4
+[0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0], #  5
+[0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0], #  6
+[0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0], #  7
+[0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0], #  8
+[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0], #  9
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # 10
+])</div></blockquote>
+<p>function.print_object()</p>
+<p>print &#8216;Opened by vline -+-&#8216;
+function_opened = Function2D(function)
+function_opened.open(VLineStructuringElement(1))
+function_opened.print_object()</p>
+<p>function_marker = function_opened
+print &#8216;Geodesic Reconstruction&#8217;
+function_reconstructed = function.geodesic_reconstruction(function_marker)
+function_reconstructed.print_object()</p>
+<p>print &#8216;Function&#8217;
+function = Function2D([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],</p>
+<blockquote>
+<div>[0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+[0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+[0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+[0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+[0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+[0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+])</div></blockquote>
+<p>function.print_object()</p>
+<dl class="docutils">
+<dt>marker   = Function2D([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],</dt>
+<dd>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+])</dd>
+</dl>
+<p>print &#8216;Geodesic Reconstruction&#8217;
+marker.print_object()
+function_reconstructed = function.reconstruct_using_fifo(marker, verbose=True)
+function_reconstructed.print_object()</p>
+<p>#
+# End
+#</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/test_SimpleMorphoMath2D.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">SimpleMorphoMath 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Fabrice Salvaire.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

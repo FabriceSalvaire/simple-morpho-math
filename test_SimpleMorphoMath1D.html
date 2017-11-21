@@ -1,50 +1,158 @@
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial &mdash; SimpleMorphoMath 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="static/css/SimpleMorphoMath.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="SimpleMorphoMath 1.0.0 documentation" href="index.html"/> 
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> SimpleMorphoMath
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference-manual.html">2. API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SimpleMorphoMath</a>
+        
+      </nav>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Tutorial &mdash; SimpleMorphoMath 0.1.0 documentation</title>
-    
-    <link rel="stylesheet" href="static/default.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="top" title="SimpleMorphoMath 0.1.0 documentation" href="index.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li><a href="index.html">SimpleMorphoMath 0.1.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/test_SimpleMorphoMath1D.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
@@ -55,17 +163,17 @@ also need an Unicode Terminal to display correctly the output of the code.  To e
 best would be to use Ipython, an Interactive Python Console.</p>
 </div>
 <p>Load modules:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">SimpleMorphoMath.SimpleMorphoMath1D</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">SimpleMorphoMath.SimpleMorphoMath1D</span> <span class="k">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 <p>Create a new function f(x) and plot its umbra:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">function</span> <span class="o">=</span> <span class="n">Function</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="k">print</span> <span class="n">function</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s">&#39;umbra&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="o">=</span> <span class="n">Function</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="nb">print</span> <span class="n">function</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;umbra&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Result:</p>
-<div class="highlight-python"><pre>┌──┬──────────────────┐
+<div class="highlight-default"><div class="highlight"><pre><span></span>┌──┬──────────────────┐
 │11│                  │
 │10│       ◼          │
 │ 9│   ◼◼  ◼ ◼     ◼  │
@@ -77,17 +185,18 @@ best would be to use Ipython, an Interactive Python Console.</p>
 │ 3│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼ ◼│
 │ 2│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
 │ 1│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
-└──┴──────────────────┘</pre>
+└──┴──────────────────┘
+</pre></div>
 </div>
 <p>The umbra of a function f(x) is the set of all values (x, v) such that value v is less
-than or equal to f(x): <img class="math" src="images/math/ac36e4b19dbff75e2a6f2618e0283bb3a7cebd24.png" alt="{(x,v) | v \leq f(x)}"/>.</p>
-<p>Translate on the left the function f(x): <img class="math" src="images/math/9e56ed08d667c4ac14acb051b107a8bee601ad68.png" alt="f_{-1}(x) = f(x-1)"/>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">function_translated</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">function_translated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s">&#39;umbra&#39;</span><span class="p">)</span>
+than or equal to f(x): <span class="math">\({(x,v) | v \leq f(x)}\)</span>.</p>
+<p>Translate on the left the function f(x): <span class="math">\(f_{-1}(x) = f(x-1)\)</span>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">function_translated</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">function_translated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;umbra&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Result:</p>
-<div class="highlight-python"><pre>┌──┬──────────────────┐
+<div class="highlight-default"><div class="highlight"><pre><span></span>┌──┬──────────────────┐
 │11│                  │
 │10│      ◼           │
 │ 9│  ◼◼  ◼ ◼     ◼   │
@@ -99,16 +208,17 @@ than or equal to f(x): <img class="math" src="images/math/ac36e4b19dbff75e2a6f26
 │ 3│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼ ◼ │
 │ 2│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼ │
 │ 1│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼ │
-└──┴──────────────────┘</pre>
+└──┴──────────────────┘
+</pre></div>
 </div>
 <p>The function is padded on the right with the infinimum of the function domain, thus zero.</p>
-<p>Translate on the right the function f(x): <img class="math" src="images/math/487b16fb52c8e566aa2ae6b39464bcebf0b67df6.png" alt="f_{+1}(x) = f(x+1)"/>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">function_translated</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">function_translated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s">&#39;umbra&#39;</span><span class="p">)</span>
+<p>Translate on the right the function f(x): <span class="math">\(f_{+1}(x) = f(x+1)\)</span>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">function_translated</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">function_translated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;umbra&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Result:</p>
-<div class="highlight-python"><pre>┌──┬──────────────────┐
+<div class="highlight-default"><div class="highlight"><pre><span></span>┌──┬──────────────────┐
 │11│                  │
 │10│        ◼         │
 │ 9│    ◼◼  ◼ ◼     ◼ │
@@ -120,18 +230,19 @@ than or equal to f(x): <img class="math" src="images/math/ac36e4b19dbff75e2a6f26
 │ 3│ ◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼ │
 │ 2│ ◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
 │ 1│ ◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
-└──┴──────────────────┘</pre>
+└──┴──────────────────┘
+</pre></div>
 </div>
 <p>The function is padded on the left with zero.</p>
-<p>Let&#8217;s dilate the function f(x) by the so-called unit-ball structuring element <img class="math" src="images/math/d096867b85c937df0364c24b6f9f8e3c6fcdb4b6.png" alt="g(x) = 1"/> over
-the range :<img class="math" src="images/math/e3bc224fc880fc615e2668473e52a8d225d1d3dd.png" alt="{-1 \leq x \leq 1}"/>, 0 otherwise:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">function_dilated</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+<p>Let’s dilate the function f(x) by the so-called unit-ball structuring element <span class="math">\(g(x) = 1\)</span> over
+the range :<span class="math">\({-1 \leq x \leq 1}\)</span>, 0 otherwise:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">function_dilated</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
 <span class="n">function_dilated</span><span class="o">.</span><span class="n">dilate</span><span class="p">(</span><span class="n">unit_ball</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">function_dilated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s">&#39;umbra&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">function_dilated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;umbra&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Result:</p>
-<div class="highlight-python"><pre>┌──┬──────────────────┐
+<div class="highlight-default"><div class="highlight"><pre><span></span>┌──┬──────────────────┐
 │11│                  │
 │10│      ◼◼◼         │
 │ 9│  ◼◼◼◼◼◼◼◼◼   ◼◼◼ │
@@ -143,14 +254,15 @@ the range :<img class="math" src="images/math/e3bc224fc880fc615e2668473e52a8d225
 │ 3│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
 │ 2│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
 │ 1│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
-└──┴──────────────────┘</pre>
+└──┴──────────────────┘
+</pre></div>
 </div>
 <p>Plot with the original function as mask:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">function_dilated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s">&#39;umbra&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">function</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="n">function_dilated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;umbra&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">function</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Result:</p>
-<div class="highlight-python"><pre>┌──┬──────────────────┐
+<div class="highlight-default"><div class="highlight"><pre><span></span>┌──┬──────────────────┐
 │11│                  │
 │10│      ●◼●         │
 │ 9│  ●◼◼●●◼●◼●   ●◼● │
@@ -162,18 +274,19 @@ the range :<img class="math" src="images/math/e3bc224fc880fc615e2668473e52a8d225
 │ 3│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼●◼│
 │ 2│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
 │ 1│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
-└──┴──────────────────┘</pre>
+└──┴──────────────────┘
+</pre></div>
 </div>
 <p>Recompute the dilation using the point wise maximum of the set of translated corresponding to the
 structuring element:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">function_dilated</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">function_dilated</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">offset</span> <span class="ow">in</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span>
     <span class="n">function_dilated</span><span class="o">.</span><span class="n">pointwise_max</span><span class="p">(</span><span class="n">function</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">offset</span><span class="p">))</span>
-<span class="k">print</span> <span class="n">function_dilated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s">&#39;umbra&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">function</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">function_dilated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;umbra&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">function</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Result:</p>
-<div class="highlight-python"><pre>┌──┬──────────────────┐
+<div class="highlight-default"><div class="highlight"><pre><span></span>┌──┬──────────────────┐
 │11│                  │
 │10│      ●◼●         │
 │ 9│  ●◼◼●●◼●◼●   ●◼● │
@@ -185,16 +298,17 @@ structuring element:</p>
 │ 3│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼●◼│
 │ 2│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
 │ 1│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
-└──┴──────────────────┘</pre>
+└──┴──────────────────┘
+</pre></div>
 </div>
 <p>Erode by the unit ball:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">function_eroded</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">function_eroded</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
 <span class="n">function_eroded</span><span class="o">.</span><span class="n">erode</span><span class="p">(</span><span class="n">unit_ball</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">function_eroded</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s">&#39;umbra&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">function</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">function_eroded</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;umbra&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">function</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Result:</p>
-<div class="highlight-python"><pre>┌──┬──────────────────┐
+<div class="highlight-default"><div class="highlight"><pre><span></span>┌──┬──────────────────┐
 │11│                  │
 │10│       ◻          │
 │ 9│   ◻◻  ◻ ◻     ◻  │
@@ -206,53 +320,74 @@ structuring element:</p>
 │ 3│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◻ ◻│
 │ 2│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
 │ 1│◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼◼│
-└──┴──────────────────┘</pre>
+└──┴──────────────────┘
+</pre></div>
 </div>
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/test_SimpleMorphoMath1D.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fabrice Salvaire.
+
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li><a href="index.html">SimpleMorphoMath 0.1.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2011, Fabrice Salvaire.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="static/hidecode.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

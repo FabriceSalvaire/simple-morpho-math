@@ -1,9 +1,8 @@
-***********************
- :mod:`PrettyPrinting`
-***********************
+****************
+PrettyPrinting
+****************
 
 .. automodule:: SimpleMorphoMath.PrettyPrinting
    :members:
    :show-inheritance:
 
-.. End

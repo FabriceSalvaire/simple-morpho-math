@@ -1,97 +1,213 @@
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.1.3. SimpleMorphoMath1D &mdash; SimpleMorphoMath 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../static/css/SimpleMorphoMath.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="SimpleMorphoMath 1.0.0 documentation" href="../../index.html"/>
+        <link rel="up" title="3.1. SimpleMorphoMath" href="../SimpleMorphoMath.html"/>
+        <link rel="next" title="3.1.4. SimpleMorphoMath2D" href="SimpleMorphoMath2D.html"/>
+        <link rel="prev" title="3.1.2. PrettyPrinting" href="PrettyPrinting.html"/> 
+
+  
+  <script src="../../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> SimpleMorphoMath
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">2. Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference-manual.html">3. API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../SimpleMorphoMath.html">3.1. SimpleMorphoMath</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="MathplotlibTools.html">3.1.1. MathplotlibTools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PrettyPrinting.html">3.1.2. PrettyPrinting</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.1.3. SimpleMorphoMath1D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SimpleMorphoMath2D.html">3.1.4. SimpleMorphoMath2D</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference-manual.html#indexes">3.2. Indexes</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SimpleMorphoMath</a>
+        
+      </nav>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>2.3. SimpleMorphoMath1D &mdash; SimpleMorphoMath 0.1.0 documentation</title>
-    
-    <link rel="stylesheet" href="../../static/default.css" type="text/css" />
-    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../static/jquery.js"></script>
-    <script type="text/javascript" src="../../static/underscore.js"></script>
-    <script type="text/javascript" src="../../static/doctools.js"></script>
-    <link rel="top" title="SimpleMorphoMath 0.1.0 documentation" href="../../index.html" />
-    <link rel="up" title="2. SimpleMorphoMath" href="../SimpleMorphoMath.html" />
-    <link rel="next" title="2.4. SimpleMorphoMath2D" href="SimpleMorphoMath2D.html" />
-    <link rel="prev" title="2.2. PrettyPrinting" href="PrettyPrinting.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="SimpleMorphoMath2D.html" title="2.4. SimpleMorphoMath2D"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="PrettyPrinting.html" title="2.2. PrettyPrinting"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">SimpleMorphoMath 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../SimpleMorphoMath.html" accesskey="U">2. <tt class="docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">SimpleMorphoMath</span></tt></a> &raquo;</li> 
-      </ul>
-    </div>  
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../reference-manual.html">3. API Documentation</a> &raquo;</li>
+        
+          <li><a href="../SimpleMorphoMath.html">3.1. SimpleMorphoMath</a> &raquo;</li>
+        
+      <li>3.1.3. SimpleMorphoMath1D</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api/SimpleMorphoMath/SimpleMorphoMath1D.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="module-SimpleMorphoMath.SimpleMorphoMath1D">
-<span id="simplemorphomath1d"></span><h1>2.3. <tt class="xref py py-mod docutils literal"><span class="pre">SimpleMorphoMath1D</span></tt><a class="headerlink" href="#module-SimpleMorphoMath.SimpleMorphoMath1D" title="Permalink to this headline">¶</a></h1>
+<span id="simplemorphomath1d"></span><h1>3.1.3. SimpleMorphoMath1D<a class="headerlink" href="#module-SimpleMorphoMath.SimpleMorphoMath1D" title="Permalink to this headline">¶</a></h1>
 <p>This module implements Morphological 1D Operators.</p>
 <dl class="class">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.BallStructuringElement">
-<em class="property">class </em><tt class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</tt><tt class="descname">BallStructuringElement</tt><big>(</big><em>radius</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#BallStructuringElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.BallStructuringElement" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement" title="SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement"><tt class="xref py py-class docutils literal"><span class="pre">SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</code><code class="descname">BallStructuringElement</code><span class="sig-paren">(</span><em>radius</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#BallStructuringElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.BallStructuringElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement" title="SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement"><code class="xref py py-class docutils literal"><span class="pre">SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement</span></code></a></p>
 <p>This class implements a ball structuring element.</p>
 <p>The domain of the structuring element is [-radius, radius].</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Domain">
-<em class="property">class </em><tt class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</tt><tt class="descname">Domain</tt><big>(</big><em>inf</em>, <em>sup</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Domain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Domain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<em class="property">class </em><code class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</code><code class="descname">Domain</code><span class="sig-paren">(</span><em>inf</em>, <em>sup</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Domain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>This class implements a functional 1D domain defined by the range [inf, sup].</p>
-<p>The size of the domain defined by <tt class="docutils literal"><span class="pre">sup</span> <span class="pre">-</span> <span class="pre">inf</span> <span class="pre">+1</span></tt> is given by the function <a class="reference external" href="http://docs.python.org/library/functions.html#len" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">len()</span></tt></a>.</p>
-<p>To test if <tt class="docutils literal"><span class="pre">x</span></tt> is in the domain, use:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="ow">in</span> <span class="n">domain</span>
+<p>The size of the domain defined by <code class="docutils literal"><span class="pre">sup</span> <span class="pre">-</span> <span class="pre">inf</span> <span class="pre">+1</span></code> is given by the function <a class="reference external" href="https://docs.python.org/2/library/functions.html#len" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">len()</span></code></a>.</p>
+<p>To test if <code class="docutils literal"><span class="pre">x</span></code> is in the domain, use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="ow">in</span> <span class="n">domain</span>
 </pre></div>
 </div>
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Domain.backward_iterator">
-<tt class="descname">backward_iterator</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Domain.backward_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Domain.backward_iterator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">backward_iterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Domain.backward_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Domain.backward_iterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a backward iterator over the domain.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Domain.forward_iterator">
-<tt class="descname">forward_iterator</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Domain.forward_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Domain.forward_iterator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward_iterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Domain.forward_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Domain.forward_iterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a forward iterator over the domain.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Domain.range">
-<tt class="descname">range</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Domain.range"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Domain.range" title="Permalink to this definition">¶</a></dt>
+<code class="descname">range</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Domain.range"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Domain.range" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the list of values in the domain.</p>
 </dd></dl>
 
@@ -99,132 +215,103 @@
 
 <dl class="class">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function">
-<em class="property">class </em><tt class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</tt><tt class="descname">Function</tt><big>(</big><em>values</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<em class="property">class </em><code class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</code><code class="descname">Function</code><span class="sig-paren">(</span><em>values</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>This class implements a 1D function.</p>
 <p>The parameters <em>values</em> is an iterable that define the initial values of the function.</p>
 <p>The function domain is set to [0, len(values) -1].</p>
 <dl class="method">
-<dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function._pointwise_rank">
-<tt class="descname">_pointwise_rank</tt><big>(</big><em>other</em>, <em>rank_operator</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function._pointwise_rank"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function._pointwise_rank" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method implements a point-wise rank filter.</p>
-<p>The function is modified in-place.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function._rank_filter">
-<tt class="descname">_rank_filter</tt><big>(</big><em>structuring_element</em>, <em>rank_operator</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function._rank_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function._rank_filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method implements a rank filter.</p>
-<p>The function is modified in-place.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function._rank_filter_vhgw">
-<tt class="descname">_rank_filter_vhgw</tt><big>(</big><em>radius</em>, <em>rank_operator</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function._rank_filter_vhgw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function._rank_filter_vhgw" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method implements a rank filter using the Van Herk &amp; Gill-Werman algorithm.</p>
-<p>This algorithm comes from C. Clienti, M. Bilodeau, and S. Beucher, An Efficient Hardware
-Architecture without Line Memories for Morphological Image Processing.  In Proceedings of
-ACIVS. 2008, 147-156.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function._zeros">
-<tt class="descname">_zeros</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function._zeros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function._zeros" title="Permalink to this definition">¶</a></dt>
-<dd><p>return a Numpy zero array of the same size than the function domain.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.add">
-<tt class="descname">add</tt><big>(</big><em>obj</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.add" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a function.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.clone">
-<tt class="descname">clone</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.clone" title="Permalink to this definition">¶</a></dt>
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.clone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a copy of the function.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.clone_zeros">
-<tt class="descname">clone_zeros</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.clone_zeros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.clone_zeros" title="Permalink to this definition">¶</a></dt>
+<code class="descname">clone_zeros</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.clone_zeros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.clone_zeros" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a function defined on the same domain with values set to zero.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.close">
-<tt class="descname">close</tt><big>(</big><em>structuring_element</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.close" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close</code><span class="sig-paren">(</span><em>structuring_element</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform an closing.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.dilate">
-<tt class="descname">dilate</tt><big>(</big><em>structuring_element</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.dilate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.dilate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dilate</code><span class="sig-paren">(</span><em>structuring_element</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.dilate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.dilate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a dilation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.dilate_vhgw">
-<tt class="descname">dilate_vhgw</tt><big>(</big><em>radius</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.dilate_vhgw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.dilate_vhgw" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dilate_vhgw</code><span class="sig-paren">(</span><em>radius</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.dilate_vhgw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.dilate_vhgw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a dilation using the WHGW algorithm.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.erode">
-<tt class="descname">erode</tt><big>(</big><em>structuring_element</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.erode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.erode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">erode</code><span class="sig-paren">(</span><em>structuring_element</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.erode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.erode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform an erosion.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.erode_vhgw">
-<tt class="descname">erode_vhgw</tt><big>(</big><em>radius</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.erode_vhgw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.erode_vhgw" title="Permalink to this definition">¶</a></dt>
+<code class="descname">erode_vhgw</code><span class="sig-paren">(</span><em>radius</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.erode_vhgw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.erode_vhgw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform an erosion using the WHGW algorithm.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.filet">
-<tt class="descname">filet</tt><em class="property"> = &lt;SimpleMorphoMath.PrettyPrinting.Filet object at 0x4431c50&gt;</em><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.filet" title="Permalink to this definition">¶</a></dt>
+<code class="descname">filet</code><em class="property"> = &lt;SimpleMorphoMath.PrettyPrinting.Filet object&gt;</em><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.filet" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.geodesic_reconstruction">
-<tt class="descname">geodesic_reconstruction</tt><big>(</big><em>marker</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.geodesic_reconstruction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.geodesic_reconstruction" title="Permalink to this definition">¶</a></dt>
+<code class="descname">geodesic_reconstruction</code><span class="sig-paren">(</span><em>marker</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.geodesic_reconstruction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.geodesic_reconstruction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a geodesic reconstruction.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.h_dome">
-<tt class="descname">h_dome</tt><big>(</big><em>level</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.h_dome"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.h_dome" title="Permalink to this definition">¶</a></dt>
+<code class="descname">h_dome</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.h_dome"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.h_dome" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform an H-dome operation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.max">
-<tt class="descname">max</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.max"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.max" title="Permalink to this definition">¶</a></dt>
+<code class="descname">max</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.max"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the sup of the function.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.min">
-<tt class="descname">min</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.min"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.min" title="Permalink to this definition">¶</a></dt>
+<code class="descname">min</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.min"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.min" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the inf of the function.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.open">
-<tt class="descname">open</tt><big>(</big><em>structuring_element</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.open"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.open" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open</code><span class="sig-paren">(</span><em>structuring_element</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.open"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.open" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform an opening.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.plot">
-<tt class="descname">plot</tt><big>(</big><em>plot_type='umbra'</em>, <em>mask=None</em>, <em>umbra_character=None</em>, <em>filet=None</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>plot_type='umbra'</em>, <em>mask=None</em>, <em>umbra_character=None</em>, <em>filet=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pretty print a function.</p>
 <p>The parameter <em>plot_type</em> defines the type of plot:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">curve</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">umbra</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">dual</span></tt></li>
+<li><code class="docutils literal"><span class="pre">curve</span></code></li>
+<li><code class="docutils literal"><span class="pre">umbra</span></code></li>
+<li><code class="docutils literal"><span class="pre">dual</span></code></li>
 </ul>
 <p>The parameter <em>mask</em> set a mask function to display suppressed and added levels.</p>
 <p>The attribute <em>black_pattern</em> defines the character for a level on, <em>minus_pattern</em> for a
@@ -233,32 +320,32 @@ suppressed level and <em>plus_pattern</em> for an added level, respectively.</p>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.pointwise_max">
-<tt class="descname">pointwise_max</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.pointwise_max"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.pointwise_max" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pointwise_max</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.pointwise_max"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.pointwise_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform the point-wise max of the function with another function.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.pointwise_min">
-<tt class="descname">pointwise_min</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.pointwise_min"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.pointwise_min" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pointwise_min</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.pointwise_min"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.pointwise_min" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform the point-wise min of the function with another function.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.subtract">
-<tt class="descname">subtract</tt><big>(</big><em>obj</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.subtract"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.subtract" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subtract</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.subtract"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.subtract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subtract a function.</p>
 <p>Negative values are set to zero.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.top_hat">
-<tt class="descname">top_hat</tt><big>(</big><em>structuring_element</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.top_hat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.top_hat" title="Permalink to this definition">¶</a></dt>
+<code class="descname">top_hat</code><span class="sig-paren">(</span><em>structuring_element</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.top_hat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.top_hat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform an top-hat.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.translate">
-<tt class="descname">translate</tt><big>(</big><em>offset</em>, <em>padd_inf=True</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.translate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.translate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">translate</code><span class="sig-paren">(</span><em>offset</em>, <em>padd_inf=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#Function.translate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.translate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Translate the function.</p>
 <p>If the parameter <em>padd_inf</em> is set to True then the padding value is set to zero else to the
 sup of the function.</p>
@@ -266,40 +353,40 @@ sup of the function.</p>
 
 <dl class="attribute">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.umbra_character">
-<tt class="descname">umbra_character</tt><em class="property"> = &lt;SimpleMorphoMath.PrettyPrinting.UmbraCharacter object at 0x4431e10&gt;</em><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.umbra_character" title="Permalink to this definition">¶</a></dt>
+<code class="descname">umbra_character</code><em class="property"> = &lt;SimpleMorphoMath.PrettyPrinting.UmbraCharacter object&gt;</em><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.umbra_character" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.Function.unit_ball">
-<tt class="descname">unit_ball</tt><em class="property"> = &lt;SimpleMorphoMath.SimpleMorphoMath1D.BallStructuringElement object at 0x45cb3d0&gt;</em><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.unit_ball" title="Permalink to this definition">¶</a></dt>
+<code class="descname">unit_ball</code><em class="property"> = &lt;SimpleMorphoMath.SimpleMorphoMath1D.BallStructuringElement object&gt;</em><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.Function.unit_ball" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement">
-<em class="property">class </em><tt class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</tt><tt class="descname">StructuringElement</tt><big>(</big><em>offsets</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<em class="property">class </em><code class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</code><code class="descname">StructuringElement</code><span class="sig-paren">(</span><em>offsets</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>This class implements a structuring element.</p>
 <p>The parameter <em>offsets</em> is an iterable that contains the offsets of the pixels on of the
 structuring element.</p>
-<p>The neighbor set <img class="math" src="../../images/math/ab9bfa163d93894c92a950188e0449d2caab161c.png" alt="N_G^+"/> and <img class="math" src="../../_images/math/385fdaeb7039e8c793bf14c2e9c3819be10a1fe5.png" alt="N_G^-"/> is defined in the article: Morphological
+<p>The neighbor set <span class="math">\(N_G^+\)</span> and <span class="math">\(N_G^-\)</span> is defined in the article: Morphological
 Grayscale Reconstruction in Image Analysis: Applications and Efficient Algorithms, Luc Vincent,
 IEEE Transactions on image processing, Vol. 2, No. 2, April 1993.</p>
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement.half_length">
-<tt class="descname">half_length</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElement.half_length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement.half_length" title="Permalink to this definition">¶</a></dt>
+<code class="descname">half_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElement.half_length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement.half_length" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement.iterator_minus">
-<tt class="descname">iterator_minus</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElement.iterator_minus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement.iterator_minus" title="Permalink to this definition">¶</a></dt>
+<code class="descname">iterator_minus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElement.iterator_minus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement.iterator_minus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Iterate over the offset from the reference location.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement.iterator_plus">
-<tt class="descname">iterator_plus</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElement.iterator_plus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement.iterator_plus" title="Permalink to this definition">¶</a></dt>
+<code class="descname">iterator_plus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElement.iterator_plus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElement.iterator_plus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Iterate over the offset up to the reference location.</p>
 </dd></dl>
 
@@ -307,97 +394,113 @@ IEEE Transactions on image processing, Vol. 2, No. 2, April 1993.</p>
 
 <dl class="class">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.StructuringElementIterator">
-<em class="property">class </em><tt class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</tt><tt class="descname">StructuringElementIterator</tt><big>(</big><em>structuring_element</em>, <em>domain</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElementIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElementIterator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<em class="property">class </em><code class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</code><code class="descname">StructuringElementIterator</code><span class="sig-paren">(</span><em>structuring_element</em>, <em>domain</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElementIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElementIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>This class implements a structuring element iterator.</p>
 <p>The parameter <em>structuring_element</em> defines the structuring element and the parameter <em>domain</em>
 defines the domain of the lattice.</p>
 <dl class="method">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.StructuringElementIterator.iterate_at">
-<tt class="descname">iterate_at</tt><big>(</big><em>location</em>, <em>sub_domain=None</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElementIterator.iterate_at"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElementIterator.iterate_at" title="Permalink to this definition">¶</a></dt>
+<code class="descname">iterate_at</code><span class="sig-paren">(</span><em>location</em>, <em>sub_domain=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#StructuringElementIterator.iterate_at"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.StructuringElementIterator.iterate_at" title="Permalink to this definition">¶</a></dt>
 <dd><p>Iterate over the structuring element positioned at a location.</p>
 <p>The parameter <em>sub_domain</em> is used to restrict the domain of the structuring element, set to
-&#8216;+&#8217; to restrict to the positive domain and to &#8216;-&#8216; for the negative domain, respectively.</p>
+‘+’ to restrict to the positive domain and to ‘-‘ for the negative domain, respectively.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.even">
-<tt class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</tt><tt class="descname">even</tt><big>(</big><em>n</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#even"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.even" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</code><code class="descname">even</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#even"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.even" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if <em>n</em> is even</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.odd">
-<tt class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</tt><tt class="descname">odd</tt><big>(</big><em>n</em><big>)</big><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#odd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.odd" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</code><code class="descname">odd</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/SimpleMorphoMath/SimpleMorphoMath1D.html#odd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.odd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if <em>n</em> is odd</p>
 </dd></dl>
 
 <dl class="data">
 <dt id="SimpleMorphoMath.SimpleMorphoMath1D.unit_ball">
-<tt class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</tt><tt class="descname">unit_ball</tt><em class="property"> = &lt;SimpleMorphoMath.SimpleMorphoMath1D.BallStructuringElement object at 0x45cb5d0&gt;</em><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.unit_ball" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">SimpleMorphoMath.SimpleMorphoMath1D.</code><code class="descname">unit_ball</code><em class="property"> = &lt;SimpleMorphoMath.SimpleMorphoMath1D.BallStructuringElement object&gt;</em><a class="headerlink" href="#SimpleMorphoMath.SimpleMorphoMath1D.unit_ball" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unit ball structuring element.</p>
 </dd></dl>
 
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="PrettyPrinting.html"
-                        title="previous chapter">2.2. <tt class="docutils literal docutils literal docutils literal"><span class="pre">PrettyPrinting</span></tt></a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="SimpleMorphoMath2D.html"
-                        title="next chapter">2.4. <tt class="docutils literal"><span class="pre">SimpleMorphoMath2D</span></tt></a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../../_sources/api/SimpleMorphoMath/SimpleMorphoMath1D.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SimpleMorphoMath2D.html" class="btn btn-neutral float-right" title="3.1.4. SimpleMorphoMath2D" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PrettyPrinting.html" class="btn btn-neutral" title="3.1.2. PrettyPrinting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fabrice Salvaire.
+
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="SimpleMorphoMath2D.html" title="2.4. SimpleMorphoMath2D"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="PrettyPrinting.html" title="2.2. PrettyPrinting"
-             >previous</a> |</li>
-        <li><a href="../../index.html">SimpleMorphoMath 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../SimpleMorphoMath.html" >2. <tt class="docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">SimpleMorphoMath</span></tt></a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2011, Fabrice Salvaire.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../static/jquery.js"></script>
+      <script type="text/javascript" src="../../static/underscore.js"></script>
+      <script type="text/javascript" src="../../static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../../static/hidecode.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

@@ -1,0 +1,8 @@
+********************
+SimpleMorphoMath1D
+********************
+
+.. automodule:: SimpleMorphoMath.SimpleMorphoMath1D
+   :members:
+   :show-inheritance:
+

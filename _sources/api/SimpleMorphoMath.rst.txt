@@ -1,6 +1,6 @@
-*************************
- :mod:`SimpleMorphoMath`
-*************************
+******************
+SimpleMorphoMath
+******************
 
 .. toctree::
   SimpleMorphoMath/MathplotlibTools
@@ -8,4 +8,6 @@
   SimpleMorphoMath/SimpleMorphoMath1D
   SimpleMorphoMath/SimpleMorphoMath2D
 
-.. End
+.. automodule:: SimpleMorphoMath
+   :members:
+   :show-inheritance:

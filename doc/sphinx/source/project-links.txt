@@ -1,0 +1,50 @@
+.. -*- Mode: rst -*-
+
+..
+   |SimpleMorphoMathUrl|
+   |SimpleMorphoMathHomePage|_
+   |SimpleMorphoMathDoc|_
+   |SimpleMorphoMath@github|_
+   |SimpleMorphoMath@readthedocs|_
+   |SimpleMorphoMath@readthedocs-badge|
+   |SimpleMorphoMath@pypi|_
+
+.. |ohloh| image:: https://www.openhub.net/accounts/230426/widgets/account_tiny.gif
+   :target: https://www.openhub.net/accounts/fabricesalvaire
+   :alt: Fabrice Salvaire's Ohloh profile
+   :height: 15px
+   :width:  80px
+
+.. |SimpleMorphoMathUrl| replace:: http://fabricesalvaire.github.io/simple-morpho-math
+
+.. |SimpleMorphoMathHomePage| replace:: SimpleMorphoMath Home Page
+.. _SimpleMorphoMathHomePage: http://fabricesalvaire.github.io/simple-morpho-math
+
+.. |SimpleMorphoMath@readthedocs-badge| image:: https://readthedocs.org/projects/SimpleMorphoMath/badge/?version=latest
+   :target: http://SimpleMorphoMath.readthedocs.org/en/latest
+
+.. |SimpleMorphoMath@github| replace:: https://github.com/FabriceSalvaire/SimpleMorphoMath
+.. .. _SimpleMorphoMath@github: https://github.com/FabriceSalvaire/SimpleMorphoMath
+
+.. |SimpleMorphoMath@pypi| replace:: https://pypi.python.org/pypi/SimpleMorphoMath
+.. .. _SimpleMorphoMath@pypi: https://pypi.python.org/pypi/SimpleMorphoMath
+
+.. |Build Status| image:: https://travis-ci.org/FabriceSalvaire/SimpleMorphoMath.svg?branch=master
+   :target: https://travis-ci.org/FabriceSalvaire/SimpleMorphoMath
+   :alt: SimpleMorphoMath build status @travis-ci.org
+
+.. |Pypi Version| image:: https://img.shields.io/pypi/v/SimpleMorphoMath.svg
+   :target: https://pypi.python.org/pypi/SimpleMorphoMath
+   :alt: SimpleMorphoMath last version
+
+.. |Pypi License| image:: https://img.shields.io/pypi/l/SimpleMorphoMath.svg
+   :target: https://pypi.python.org/pypi/SimpleMorphoMath
+   :alt: SimpleMorphoMath license
+
+.. |Pypi Python Version| image:: https://img.shields.io/pypi/pyversions/SimpleMorphoMath.svg
+   :target: https://pypi.python.org/pypi/SimpleMorphoMath
+   :alt: SimpleMorphoMath python version
+
+..  coverage test
+..  https://img.shields.io/pypi/status/Django.svg
+..  https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star

@@ -8,7 +8,7 @@
 """ This module implements Morphological 1D Operators.
 """
 
-# Fixme: in-place ? f() -> 
+# Fixme: in-place ? f() ->
 
 ####################################################################################################
 
@@ -31,7 +31,7 @@ def odd(n):
 ####################################################################################################
 
 class Domain(object):
-    
+
     """ This class implements a functional 1D domain defined by the range [inf, sup].
 
     The size of the domain defined by ``sup - inf +1`` is given by the function :func:`len`.
@@ -41,7 +41,7 @@ class Domain(object):
       x in domain
 
     """
-    
+
     ##############################################
 
     def __init__(self, inf, sup):
@@ -54,7 +54,7 @@ class Domain(object):
     def __len__(self):
 
         """ Return the size of the domain. """
-        
+
         return self.sup - self.inf +1
 
     ##############################################
@@ -62,31 +62,31 @@ class Domain(object):
     def range(self):
 
         """ Return the list of values in the domain. """
-        
+
         return range(self.inf, self.sup +1)
-    
+
     ##############################################
 
     def forward_iterator(self):
 
         """ Return a forward iterator over the domain. """
-        
-        return xrange(self.inf, self.sup +1)
+
+        return range(self.inf, self.sup +1)
 
     ##############################################
 
     def backward_iterator(self):
 
         """ Return a backward iterator over the domain. """
-        
-        return xrange(self.sup, self.inf -1, -1)
+
+        return range(self.sup, self.inf -1, -1)
 
     ##############################################
 
     def __contains__(self, x):
 
         """ Test if *x* is in the domain. """
-        
+
         return self.inf <= x <= self.sup
 
 ####################################################################################################
@@ -105,7 +105,7 @@ class StructuringElement(object):
 
     # Fixme: this code is only true for symetrical structuring element.
     #   implements reference location
-    
+
     ##############################################
 
     def __init__(self, offsets):
@@ -137,7 +137,7 @@ class StructuringElement(object):
         """ Iterate over the offset up to the reference location. """
 
         # Fixme: check definition
-        
+
         return iter(self.offsets[:self.half_length()+1])
 
     ##############################################
@@ -145,7 +145,7 @@ class StructuringElement(object):
     def iterator_minus(self):
 
         """ Iterate over the offset from the reference location. """
-        
+
         return iter(self.offsets[-self.half_length()-1:])
 
 ####################################################################################################
@@ -156,7 +156,7 @@ class BallStructuringElement(StructuringElement):
 
     The domain of the structuring element is [-radius, radius].
     """
-    
+
     ##############################################
 
     def __init__(self, radius):
@@ -177,14 +177,14 @@ class StructuringElementIterator(object):
     The parameter *structuring_element* defines the structuring element and the parameter *domain*
     defines the domain of the lattice.
     """
-    
+
     ##############################################
 
     def __init__(self, structuring_element, domain):
 
         self.domain = domain
         self.structuring_element = structuring_element
-     
+
     ##############################################
 
     def iterate_at(self, location, sub_domain=None):
@@ -194,7 +194,7 @@ class StructuringElementIterator(object):
         The parameter *sub_domain* is used to restrict the domain of the structuring element, set to
         '+' to restrict to the positive domain and to '-' for the negative domain, respectively.
         """
-        
+
         if sub_domain is None:
             iterator = self.structuring_element
         elif sub_domain == '+':
@@ -227,10 +227,10 @@ class Function(object):
 
     # umbra_character = PrettyPrinting.ascii_umbra
     # filet = PrettyPrinting.ascii_filet
-    
+
     umbra_character = PrettyPrinting.standard_umbra
-    filet = PrettyPrinting.standard_filet 
-    
+    filet = PrettyPrinting.standard_filet
+
     ##############################################
 
     def __init__(self, values):
@@ -243,7 +243,7 @@ class Function(object):
     def clone(self):
 
         """ Return a copy of the function. """
-        
+
         return self.__class__(self)
 
     ##############################################
@@ -251,7 +251,7 @@ class Function(object):
     def clone_zeros(self):
 
         """ Return a function defined on the same domain with values set to zero. """
-        
+
         return self.__class__(self._zeros())
 
     ##############################################
@@ -259,15 +259,15 @@ class Function(object):
     def _zeros(self):
 
         """ return a Numpy zero array of the same size than the function domain. """
-        
-        return np.zeros(len(self), dtype=np.uint) 
+
+        return np.zeros(len(self), dtype=np.uint)
 
     ##############################################
 
     def __len__(self):
 
         """ Return the size of the function domain. """
-        
+
         return self.values.size
 
     ##############################################
@@ -275,7 +275,7 @@ class Function(object):
     def __getitem__(self, i):
 
         """ Return the function value at *i*. """
-        
+
         return self.values[i]
 
     ##############################################
@@ -283,7 +283,7 @@ class Function(object):
     def __setitem__(self, i, value):
 
         """ Set the function value at *i*. """
-        
+
         self.values[i] = value
 
     ##############################################
@@ -291,7 +291,7 @@ class Function(object):
     def add(self, obj):
 
         """ Add a function. """
-        
+
         self.values += obj
         return self
 
@@ -300,7 +300,7 @@ class Function(object):
     def __add__(a, b):
 
         """ Return sum of *a* with *b*. """
-        
+
         return a.clone().add(b)
 
     ##############################################
@@ -308,7 +308,7 @@ class Function(object):
     def __iadd__(self, obj):
 
         """ Add a function. """
-        
+
         return self.add(obj)
 
     ##############################################
@@ -319,7 +319,7 @@ class Function(object):
 
         Negative values are set to zero.
         """
-        
+
         self.values -= obj
         self.values[np.where(self.values < 0)] = 0
         return self
@@ -329,7 +329,7 @@ class Function(object):
     def __sub__(a, b):
 
         """ Return the subtraction of *a* with *b*. """
-        
+
         return a.clone().subtract(b)
 
     ##############################################
@@ -337,7 +337,7 @@ class Function(object):
     def __isub__(self, obj):
 
         """ Subtract a function. """
-        
+
         return self.subtract(obj)
 
     ##############################################
@@ -345,7 +345,7 @@ class Function(object):
     def __eq__(self, other):
 
         """ Test if the functions are equal. """
-        
+
         if other is None: # Fixme: why ?
             return False
         else:
@@ -373,7 +373,7 @@ class Function(object):
             umbra_character = self.umbra_character
         if filet is None:
             filet = self.filet
-        
+
         white_pattern = ' '
 
         if plot_type == 'curve':
@@ -423,11 +423,11 @@ class Function(object):
         sub_rule = filet.horizontal*(self.domain.sup +1)
         text = filet.top_left + filet.horizontal*number_of_digits + filet.up_t + sub_rule + filet.top_right + '\n'
         margin = filet.vertical + '%' + str(number_of_digits) + 'u' + filet.vertical
-        for level in xrange(int(max_value) +1, 0, -1):
+        for level in range(int(max_value) +1, 0, -1):
             text += margin % (level) + make_line(level) + filet.vertical + '\n'
         text += filet.bottom_left + filet.horizontal*number_of_digits + filet.down_t + sub_rule + filet.bottom_right + '\n'
 
-        return unicode(text)
+        return str(text)
 
     ##############################################
 
@@ -436,7 +436,7 @@ class Function(object):
         """ Return the inf of the function. """
 
         # Fixme: inf ?
-        
+
         return self.values.min()
 
     ##############################################
@@ -446,7 +446,7 @@ class Function(object):
         """ Return the sup of the function. """
 
         # Fixme: sup ?
-        
+
         return self.values.max()
 
     ##############################################
@@ -457,7 +457,7 @@ class Function(object):
 
         The function is modified in-place.
         """
-        
+
         structuring_element_iterator = StructuringElementIterator(structuring_element, self.domain)
 
         new_values = self.clone_zeros() # so as to use: new_values[i]
@@ -470,7 +470,7 @@ class Function(object):
     def erode(self, structuring_element):
 
         """ Perform an erosion. """
-        
+
         self._rank_filter(structuring_element, rank_operator=min)
         return self
 
@@ -479,7 +479,7 @@ class Function(object):
     def dilate(self, structuring_element):
 
         """ Perform a dilation. """
-        
+
         self._rank_filter(structuring_element, rank_operator=max)
         return self
 
@@ -488,7 +488,7 @@ class Function(object):
     def open(self, structuring_element):
 
         """ Perform an opening. """
-        
+
         self.erode(structuring_element)
         self.dilate(structuring_element)
         return self
@@ -498,7 +498,7 @@ class Function(object):
     def close(self, structuring_element):
 
         """ Perform an closing. """
-        
+
         self.dilate(structuring_element)
         self.erode(structuring_element)
         return self
@@ -508,7 +508,7 @@ class Function(object):
     def top_hat(self, structuring_element):
 
         """ Perform an top-hat. """
-        
+
         self -= self.clone().open(structuring_element)
         return self
 
@@ -521,8 +521,8 @@ class Function(object):
         If the parameter *padd_inf* is set to True then the padding value is set to zero else to the
         sup of the function.
         """
-        
-        new_values = self._zeros()     
+
+        new_values = self._zeros()
 
         if offset == 0:
             new_values[...] = self.values[...]
@@ -531,7 +531,7 @@ class Function(object):
                 padd_value = 0
             else:
                 padd_value = self.max()
-            
+
             if offset < 0:
                 new_values[offset:] = padd_value
                 new_values[:offset] = self.values[-offset:]
@@ -551,7 +551,7 @@ class Function(object):
 
         The function is modified in-place.
          """
-        
+
         for i in self.domain.forward_iterator():
             self[i] = rank_operator(self[i], other[i])
         return self
@@ -561,7 +561,7 @@ class Function(object):
     def pointwise_max(self, other):
 
         """ Perform the point-wise max of the function with another function. """
-        
+
         return self._pointwise_rank(other, max)
 
     ##############################################
@@ -569,7 +569,7 @@ class Function(object):
     def pointwise_min(self, other):
 
         """ Perform the point-wise min of the function with another function. """
-        
+
         return self._pointwise_rank(other, min)
 
     ##############################################
@@ -577,7 +577,7 @@ class Function(object):
     def geodesic_reconstruction(self, marker):
 
         """ Perform a geodesic reconstruction. """
-        
+
         mask = self
         prev_reconstruction = None
         reconstruction = marker.clone()
@@ -585,7 +585,7 @@ class Function(object):
         while not reconstruction == prev_reconstruction:
             prev_reconstruction = reconstruction.clone()
             reconstruction.dilate(self.unit_ball).pointwise_min(mask)
-            
+
         return reconstruction
 
     ##############################################
@@ -593,7 +593,7 @@ class Function(object):
     def h_dome(self, level):
 
         """ Perform an H-dome operation. """
-        
+
         if level <= 0:
             raise ValueError('level must be > 0')
 
@@ -630,7 +630,7 @@ class Function(object):
             else:
                 # Propagate forward
                 forward[i] = rank_operator(forward[i-1], self[i])
-        print 'forward:'
+        print('forward:')
         # forward.plot(plot_type='umbra', mask=self)
         forward.plot(plot_type='umbra')
 
@@ -642,7 +642,7 @@ class Function(object):
             else:
                 # Propagate backward
                 backward[i] = rank_operator(backward[i+1], self[i])
-        print 'backward:'
+        print('backward:')
         # backward.plot(plot_type='umbra', mask=self)
         backward.plot(plot_type='umbra')
 
@@ -675,7 +675,7 @@ class Function(object):
     def dilate_vhgw(self, radius):
 
         """ Perform a dilation using the WHGW algorithm. """
-        
+
         return self._rank_filter_vhgw(radius, rank_operator=max)
 
     ##############################################
@@ -683,11 +683,5 @@ class Function(object):
     def erode_vhgw(self, radius):
 
         """ Perform an erosion using the WHGW algorithm. """
-        
-        return self._rank_filter_vhgw(radius, rank_operator=min)
 
-####################################################################################################
-#
-# End
-#
-####################################################################################################
+        return self._rank_filter_vhgw(radius, rank_operator=min)

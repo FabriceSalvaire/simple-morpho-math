@@ -1,9 +1,9 @@
-#####################################################################################################
+####################################################################################################
 #
 # SimpleMorphoMath - A simple mathematical morphology library.
 # Copyright (C) 2012 Salvaire Fabrice
 #
-#####################################################################################################
+####################################################################################################
 
 """ This module implements Morphological 2D Operators.
 """
@@ -31,7 +31,7 @@ class Location(object):
             raise ValueError("Wrong shape")
 
     ###############################################
-    
+
     def _check_arguments(self, args):
 
         size = len(args)
@@ -71,7 +71,7 @@ class Location(object):
         return 'Location (%i, %i)' % (self.x, self.y)
 
     ###############################################
-    
+
     def __getitem__(self, index):
 
         return self.array[index]
@@ -123,6 +123,8 @@ class Domain2D(object):
 
 class BallStructuringElement(StructuringElement):
 
+    # Fixme: ???
+
     ###############################################
 
     def __init__(self, radius):
@@ -145,9 +147,9 @@ class CrossStructuringElement(StructuringElement):
     def __init__(self, radius):
 
         offset = \
-            [Location(0, y) for y in xrange(-radius, 0)] + \
-            [Location(x, 0) for x in xrange(-radius, radius +1)] + \
-            [Location(0, y) for y in xrange(1, radius +1)]
+            [Location(0, y) for y in range(-radius, 0)] + \
+            [Location(x, 0) for x in range(-radius, radius +1)] + \
+            [Location(0, y) for y in range(1, radius +1)]
         super(CrossStructuringElement, self).__init__(offset)
 
 ####################################################################################################
@@ -158,7 +160,7 @@ class HLineStructuringElement(StructuringElement):
 
     def __init__(self, radius):
 
-        offset = [Location(0, y) for y in xrange(-radius, radius +1)]
+        offset = [Location(0, y) for y in range(-radius, radius +1)]
         super(HLineStructuringElement, self).__init__(offset)
 
 ####################################################################################################
@@ -169,7 +171,7 @@ class VLineStructuringElement(StructuringElement):
 
     def __init__(self, radius):
 
-        offset = [Location(x, 0) for x in xrange(-radius, radius +1)]
+        offset = [Location(x, 0) for x in range(-radius, radius +1)]
         super(VLineStructuringElement, self).__init__(offset)
 
 ####################################################################################################
@@ -207,7 +209,7 @@ class Function2D(Function):
 
     def _zeros(self):
 
-        return np.zeros(self.values.shape, dtype=np.uint) 
+        return np.zeros(self.values.shape, dtype=np.uint)
 
     ###############################################
 
@@ -225,7 +227,7 @@ class Function2D(Function):
 
     def translate(self, offset, padd_inf=True):
 
-        new_values = self._zeros()     
+        new_values = self._zeros()
 
         if offset == Location(0, 0):
             new_values[...] = self.values[...]
@@ -277,7 +279,7 @@ class Function2D(Function):
 
     def print_object(self):
 
-        print str(self.values).replace('0', '-') 
+        print(str(self.values).replace('0', '-'))
 
     ###############################################
 
@@ -298,11 +300,11 @@ class Function2D(Function):
             dilate(i, '+')
 
         if verbose:
-            print 'N+'
+            print('N+')
             reconstruction.print_object()
             for p in self.domain.backward_iterator():
                 dilate(p, '-')
-            print 'N-'
+            print('N-')
             reconstruction.print_object()
 
         # Propagate marker backward in self and fill the fifo for the missed points
@@ -326,9 +328,3 @@ class Function2D(Function):
                     fifo.append(q)
 
         return reconstruction
-
-####################################################################################################
-#
-# End
-#
-####################################################################################################

@@ -59,9 +59,9 @@ commands to install the stable or devel branch:
 
 .. code-block:: sh
 
-  pip install git+https://github.com/FabriceSalvaire/SimpleMorphoMath
+  pip install git+https://github.com/FabriceSalvaire/simple-morpho-math
 
-  pip install git+https://github.com/FabriceSalvaire/SimpleMorphoMath@devel
+  pip install git+https://github.com/FabriceSalvaire/simple-morpho-math@devel
 
 Installation from Source
 ------------------------
